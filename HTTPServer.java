@@ -22,7 +22,7 @@ public class HTTPServer {
     }
     public static void main(String[] args) {
         try {
-            ServerSocket ss=new ServerSocket(8888);
+            ServerSocket ss=new ServerSocket(8889);
             String returnData = new String("");
             while(true){
                 Socket socket=ss.accept();
