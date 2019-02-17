@@ -1,10 +1,11 @@
-package Decryption4CsuApp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -60,7 +61,7 @@ public class HTTPServer {
                         String[] conditions = condition.split("&");
                         for(int i=0;i<conditions.length;i++){
                             if(conditions[i].startsWith("mode")) mode = conditions[i].split("=")[1];
-                            if(conditions[i].startsWith("data")) data = conditions[i].split("=")[1];
+                            if(conditions[i].startsWith("data")) data = conditions[i].substring(5,conditions[i].length());
                         }
                         switch (mode) {
                             case "1":
@@ -73,8 +74,12 @@ public class HTTPServer {
                             default:
                                 Key = "null";      
                         }
+                        data = data.replace("%20", "");
                         data = replaceBlank(data);
-                        Des tools = new Des("PUB_14171");
+                        System.out.println(data);
+                        
+                        Des tools = new Des(Key);
+
                        
                         switch(mode){
                             case "1": returnData = tools.encode(data);break;
