@@ -104,7 +104,7 @@ public class Des {
                 case "1": System.out.println(tools.encode(data));break;
                 case "2": System.out.println(tools.decode(data));break;
                 case "3": System.out.println(tools.decode(data));break;
-                case "4": System.out.println(tools.encode(data)+"\n");System.out.println(Base62.base62Encode(Base64.getDecoder().decode(tools.encode(data)))+"ie");break;
+                case "4": System.out.println(tools.encode(data)+"\n");System.out.println(tools.encode(data).replace("=", "ie").replace("/", "is"));break;
                 default: break;
             }
         }

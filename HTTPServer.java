@@ -85,7 +85,9 @@ public class HTTPServer {
                             case "1": returnData = tools.encode(data);break;
                             case "2": returnData = tools.decode(data);break;
                             case "3": returnData = tools.decode(data);break;
-                            case "4": returnData = Base62.base62Encode(Base64.getDecoder().decode(tools.encode(data)))+"ie";break;
+                            case "4": 
+                                if(tools.encode(data).contains("+")){returnData="error";break;} 
+                                returnData = tools.encode(data).replace("=", "ie").replace("/", "is");break;
                             default: break;
                         }
                     }
