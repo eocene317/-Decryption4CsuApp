@@ -12,7 +12,7 @@ import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.IvParameterSpec;
  
 /**
- * Des加解密工具类
+ * Des加解密工具类啦啦啦
  *
  * @author wz
  */
